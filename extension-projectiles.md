@@ -165,3 +165,13 @@ info.onScore(100, function () {
 - This time, fully up is **0** and fully down is **120**.
 
 **Test your code**
+- Play your game and test it out - where does the enemy spawn?
+
+```blocks
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    sprites.destroy(sprite)
+    sprites.destroy(otherSprite)
+    let mySprite2 = sprites.create(img`.`, SpriteKind.Enemy)
+    mySprite2.setPosition(randint(0, 160), randint(0, 120))
+})
+```
