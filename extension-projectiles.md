@@ -6,7 +6,7 @@ This tutorial will add to your introductory game.
 
 We will add in the ability to throw things at the enemy to destroy them.
 
-You now have access to **all of the blocks** in MakeCode, so finding the correct blocks will be more challenging.
+You now have access to more blocks, so finding the correct blocks will be more challenging.
 
 ## 1: Throw a projectile
 *Use button A to throw something*
@@ -174,4 +174,25 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     let mySprite2 = sprites.create(img`.`, SpriteKind.Enemy)
     mySprite2.setPosition(randint(0, 160), randint(0, 120))
 })
+```
+
+```ghost
+scene.setBackgroundImage(img`.`)
+let mySprite = sprites.create(img`.`, SpriteKind.Player)
+let mySprite2 = sprites.create(img`.`, SpriteKind.Enemy)
+mySprite.setStayInScreen(true)
+mySprite.sayText(":)")
+mySprite2.follow(mySprite)
+controller.moveSprite(mySprite)
+effects.confetti.startScreenEffect()
+effects.confetti.endScreenEffect()
+game.onUpdateInterval(500, function () {})
+game.setGameOverEffect(true, effects.confetti)
+game.setGameOverPlayable(true, music.melodyPlayable(music.powerUp), false)
+game.setGameOverMessage(true, "GAME OVER!")
+game.splash("")
+info.setScore(0)
+music.play(music.stringPlayable("- - - - - - - - ", 120), music.PlaybackMode.UntilDone)
+music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.UntilDone)
+music.play(music.createSoundEffect(WaveShape.Sine, 5000, 0, 255, 0, 500, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
 ```
