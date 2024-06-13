@@ -11,7 +11,7 @@ We will add in the ability to throw things at the enemy to destroy them.
 
 You now have access to **all of the blocks** in MakeCode.
 
-## Throw a projectile
+## 1: Throw a projectile
 *Use button A to throw something*
 
 **Find the blocks to make a new event loop**
@@ -35,8 +35,46 @@ You now have access to **all of the blocks** in MakeCode.
         - *set vy to 0 if you only want your player to throw left or right*
         - *set vy to a negative number to throw up, a positive number to throw down*
 
+**Test your game**
+- Practice throwing projectiles - do they go where you want them to?
+- Edit the speed and direction until you are happy with it.
+
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile = sprites.createProjectileFromSprite(img`.`, mySprite, 50, 50)
+})
+```
+
+
+## 2: Destroy the enemy
+*Destroy the enemy when hit*
+
+**Find the blocks to make a new event loop**
+- Click the ``||sprites:Sprites||`` menu.
+- Choose the ``||sprites:on sprite of kind Player overlaps with sprite of kind Player||`` block.
+- Drag-and-drop it onto an **empty space** on the screen.
+
+**Choose the right sprite types**
+- Click the **first** ``||sprites:Player||`` option.
+- Change it to ``||sprites:Projectile||``.
+- Click the **second** ``||sprites:Player||`` option.
+- Change it to ``||sprites:Enemy||``.
+
+*The block now controls what happens when a projectile sprite overlaps (or touches) an enemy sprite.*
+
+**Find the blocks**
+- Click the ``||sprites:Sprites||`` menu.
+- Find ``||sprites:destroy mySprite||``.
+- Drag-and-drop this into the ``||sprites:overlap||`` block.
+
+**Destroy the right sprites**
+- You want to destroy the enemy and also the projectile that hit it.
+- ............................
+- The ``||sprites:overlap||`` block states that when a projectile
+
+```blocks
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    sprites.destroy(sprite)
+    sprites.destroy(otherSprite)
 })
 ```
