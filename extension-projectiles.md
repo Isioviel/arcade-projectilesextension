@@ -4,12 +4,9 @@
 
 This tutorial will add to your introductory game.
 
-In this game, you currently have a player character chased by an enemy character.
-The longer you manage to run away, the higher your score.
-
 We will add in the ability to throw things at the enemy to destroy them.
 
-You now have access to **all of the blocks** in MakeCode.
+You now have access to **all of the blocks** in MakeCode, so finding the correct blocks will be more challenging.
 
 ## 1: Throw a projectile
 *Use button A to throw something*
@@ -66,11 +63,23 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 - Click the ``||sprites:Sprites||`` menu.
 - Find ``||sprites:destroy mySprite||``.
 - Drag-and-drop this into the ``||sprites:overlap||`` block.
+- Drag-and-drop the same block in again, so that you have **two** ``||sprites:destroy||`` blocks.
 
 **Destroy the right sprites**
 - You want to destroy the enemy and also the projectile that hit it.
-- ............................
-- The ``||sprites:overlap||`` block states that when a projectile
+- Look at your ``||sprites:overlap||`` block - there are two round red blocks labelled ``||variables:sprite||`` and ``||variables:otherSprite||``.
+- Drag-and-drop ``||variables:sprite||`` onto the **first** ``||sprites:destroy||`` block, to replace ``||variables:mySprite||``.
+- Drag-and-drop ``||variables:otherSprite||`` onto the **second** ``||sprites:destroy||`` block, to replace ``||variables:mySprite||``.
+
+![drag-and-drop sprite and otherSprite variables](https://raw.githubusercontent.com/Isioviel/arcade-projectilesextension/master/images/sprite-otherSprite-dragdrop.PNG)
+
+**Test your game**
+- Practice destroying the enemy - does it work?
+
+**Change the destroy effect**
+- *Make sure that your game works correctly before continuing.*
+- Click the ``||sprites:+||`` symbol at the end of the ``||sprites:destroy||`` blocks.
+- Choose the effect you want, and test it out.
 
 ```blocks
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
